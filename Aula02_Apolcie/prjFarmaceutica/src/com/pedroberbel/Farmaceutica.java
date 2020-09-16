@@ -1,12 +1,13 @@
 package com.pedroberbel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Farmaceutica {
     private String cidade;
     private int idFarmaceutica;
     private String nomeFarmaceutica;
     private String uf;
-
-
 
     //Métodos
 
