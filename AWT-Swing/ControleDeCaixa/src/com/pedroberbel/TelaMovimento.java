@@ -3,7 +3,7 @@ package com.pedroberbel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener; //Botão
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -76,7 +76,7 @@ public class TelaMovimento extends JFrame implements WindowListener, ActionListe
         cmdSair.setSize(dButton);
         cmdSair.setLocation(180,185);
         cmdSair.addActionListener(this);
-        add(cmdSair);
+        this.add(cmdSair);
 
         txtMsg = new TextArea(null);
         txtMsg.setSize(dTextArea);
@@ -141,7 +141,7 @@ public class TelaMovimento extends JFrame implements WindowListener, ActionListe
             txtSaldo.setText(Double.toString(caixa.getSaldo()));
         }
 
-    } //fim actionPerformade
+    } //fim actionPerformed
 
 
 }
