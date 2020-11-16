@@ -13,8 +13,21 @@ public class TelaCalculadora extends JFrame implements WindowListener, ActionLis
     protected Button btnNum1, btnNum2, btnNum3, btnNum4, btnNum5, btnNum6, btnNum7, btnNum8, btnNum9, btnNum0;
     protected Button btnSoma, btnSubtracao, btnDivisao, btnMultiplicacao, btnResultado, btnLimpa;
     protected TextField txtVisor;
-    private int controleOp = 0, selectedOp = 0, primeiroValor = 0, segundoValor = 0;
-    private int resultado = 0;
+    private int controleOp = 0, selectedOp = 0, tem1Valor = 0, tem2Valor = 0;
+    private String primeiroValor = "", segundoValor = "";
+    private double primeiroValorInt = 0, segundoValorInt = 0;
+    private String expressao = "";
+    private double resultado = 0;
+
+    private String teste;
+    private String novoValor;
+
+    private String concatenaValor(String valor){
+        this.teste = this.novoValor;
+        this.novoValor = teste.concat(valor);
+        return this.novoValor;
+    }
+
     public TelaCalculadora(){
         dFrame = new Dimension(350,400);
         dLabel = new Dimension(40,20);
@@ -29,12 +42,13 @@ public class TelaCalculadora extends JFrame implements WindowListener, ActionLis
         setLayout(null);
 
 
+
         //Visor
         txtVisor = new TextField(null);
         txtVisor.setSize(dTextField);
         txtVisor.setLocation(5,40);
         txtVisor.setEditable(false);
-        txtVisor.setText("0");
+        txtVisor.setText("Digite os números");
         add(txtVisor);
 
         //Botões de ação
@@ -67,6 +81,12 @@ public class TelaCalculadora extends JFrame implements WindowListener, ActionLis
         btnResultado.setLocation(275,285);
         btnResultado.addActionListener(this);
         add(btnResultado);
+
+        btnLimpa = new Button("CLR");
+        btnLimpa.setSize(dButton);
+        btnLimpa.setLocation(105,285);
+        btnLimpa.addActionListener(this);
+        add(btnLimpa);
 
         //Botões numéricos
 
@@ -158,201 +178,228 @@ public class TelaCalculadora extends JFrame implements WindowListener, ActionLis
     @Override
     public void actionPerformed(ActionEvent e){
     //botões numéricos
-        if(e.getSource()==btnNum0){
-            if(controleOp == 0){
-                this.txtVisor.setText("0");
-                controleOp = 1;
-                primeiroValor = 0;
-            } else if (controleOp == 2) {
-                this.txtVisor.setText(this.txtVisor.getText()+" 0 ");
-                controleOp = 3;
-                segundoValor = 0;
-            }
 
+        if(e.getSource()==btnNum0){
+            if(controleOp == 0) {
+                this.primeiroValor = this.primeiroValor + "0";
+                this.txtVisor.setText(this.primeiroValor);
+                this.primeiroValorInt = Double.parseDouble(this.primeiroValor);
+            } else if (controleOp == 1){
+                this.segundoValor = this.segundoValor + "0";
+                this.expressao = this.expressao + "0";
+                this.segundoValorInt = Double.parseDouble(this.segundoValor);
+                this.txtVisor.setText(this.expressao);
+            }
         }
         if(e.getSource()==btnNum1){
-            if(controleOp == 0){
-                this.txtVisor.setText("1");
-                controleOp = 1;
-                primeiroValor = 1;
-            } else if (controleOp == 2) {
-                this.txtVisor.setText(this.txtVisor.getText()+" 1 ");
-                controleOp = 3;
-                segundoValor = 1;
+            if(controleOp == 0) {
+                this.primeiroValor = this.primeiroValor + "1";
+                this.txtVisor.setText(this.primeiroValor);
+                this.primeiroValorInt = Double.parseDouble(this.primeiroValor);
+            } else if (controleOp == 1){
+                this.segundoValor = this.segundoValor + "1";
+                this.expressao = this.expressao + "1";
+                this.segundoValorInt = Double.parseDouble(this.segundoValor);
+                this.txtVisor.setText(this.expressao);
             }
 
         }
         if(e.getSource()==btnNum2){
-            if(controleOp == 0){
-                this.txtVisor.setText("2");
-                controleOp = 1;
-                primeiroValor = 2;
-            } else if (controleOp == 2) {
-                this.txtVisor.setText(this.txtVisor.getText()+" 2 ");
-                controleOp = 3;
-                segundoValor = 2;
+            if(controleOp == 0) {
+                this.primeiroValor = this.primeiroValor + "2";
+                this.txtVisor.setText(this.primeiroValor);
+                this.primeiroValorInt = Double.parseDouble(this.primeiroValor);
+            } else if (controleOp == 1){
+                this.segundoValor = this.segundoValor + "2";
+                this.expressao = this.expressao + "2";
+                this.segundoValorInt = Double.parseDouble(this.segundoValor);
+                this.txtVisor.setText(this.expressao);
             }
 
         }
         if(e.getSource()==btnNum3){
-            if(controleOp == 0){
-                this.txtVisor.setText("3");
-                controleOp = 1;
-                primeiroValor = 3;
-            } else if (controleOp == 2) {
-                this.txtVisor.setText(this.txtVisor.getText()+" 3 ");
-                controleOp = 3;
-                segundoValor = 3;
+            if(controleOp == 0) {
+                this.primeiroValor = this.primeiroValor + "3";
+                this.txtVisor.setText(this.primeiroValor);
+                this.primeiroValorInt = Double.parseDouble(this.primeiroValor);
+            } else if (controleOp == 1){
+                this.segundoValor = this.segundoValor + "3";
+                this.expressao = this.expressao + "3";
+                this.segundoValorInt = Double.parseDouble(this.segundoValor);
+                this.txtVisor.setText(this.expressao);
             }
 
         }
         if(e.getSource()==btnNum4){
-            if(controleOp == 0){
-                this.txtVisor.setText("4");
-                controleOp = 1;
-                primeiroValor = 4;
-            } else if (controleOp == 2) {
-                this.txtVisor.setText(this.txtVisor.getText()+" 4 ");
-                controleOp = 3;
-                segundoValor = 4;
+            if(controleOp == 0) {
+                this.primeiroValor = this.primeiroValor + "4";
+                this.txtVisor.setText(this.primeiroValor);
+                this.primeiroValorInt = Double.parseDouble(this.primeiroValor);
+            } else if (controleOp == 1){
+                this.segundoValor = this.segundoValor + "4";
+                this.expressao = this.expressao + "4";
+                this.segundoValorInt = Double.parseDouble(this.segundoValor);
+                this.txtVisor.setText(this.expressao);
             }
 
         }
         if(e.getSource()==btnNum5){
-            if(controleOp == 0){
-                this.txtVisor.setText("5");
-                controleOp = 1;
-                primeiroValor = 5;
-            } else if (controleOp == 2) {
-                this.txtVisor.setText(this.txtVisor.getText()+" 5 ");
-                controleOp = 3;
-                segundoValor = 5;
+            if(controleOp == 0) {
+                this.primeiroValor = this.primeiroValor + "5";
+                this.txtVisor.setText(this.primeiroValor);
+                this.primeiroValorInt = Double.parseDouble(this.primeiroValor);
+            } else if (controleOp == 1){
+                this.segundoValor = this.segundoValor + "5";
+                this.expressao = this.expressao + "5";
+                this.segundoValorInt = Double.parseDouble(this.segundoValor);
+                this.txtVisor.setText(this.expressao);
             }
 
         }
         if(e.getSource()==btnNum6){
-            if(controleOp == 0){
-                this.txtVisor.setText("6");
-                controleOp = 1;
-                primeiroValor = 6;
-            } else if (controleOp == 2) {
-                this.txtVisor.setText(this.txtVisor.getText()+" 6 ");
-                controleOp = 3;
-                segundoValor = 6;
+            if(controleOp == 0) {
+                this.primeiroValor = this.primeiroValor + "6";
+                this.txtVisor.setText(this.primeiroValor);
+                this.primeiroValorInt = Double.parseDouble(this.primeiroValor);
+            } else if (controleOp == 1){
+                this.segundoValor = this.segundoValor + "6";
+                this.expressao = this.expressao + "6";
+                this.segundoValorInt = Double.parseDouble(this.segundoValor);
+                this.txtVisor.setText(this.expressao);
             }
 
         }
         if(e.getSource()==btnNum7){
-            if(controleOp == 0){
-                System.out.println("Entrou 7");
-                this.txtVisor.setText("7");
-                controleOp = 1;
-                primeiroValor = 7;
-            } else if (controleOp == 2) {
-                this.txtVisor.setText(this.txtVisor.getText()+" 7 ");
-                controleOp = 3;
-                segundoValor = 7;
+            if(controleOp == 0) {
+                this.primeiroValor = this.primeiroValor + "7";
+                this.txtVisor.setText(this.primeiroValor);
+                this.primeiroValorInt = Double.parseDouble(this.primeiroValor);
+            } else if (controleOp == 1){
+                this.segundoValor = this.segundoValor + "7";
+                this.expressao = this.expressao + "7";
+                this.segundoValorInt = Double.parseDouble(this.segundoValor);
+                this.txtVisor.setText(this.expressao);
             }
 
         }
         if(e.getSource()==btnNum8){
-            if(controleOp == 0){
-                this.txtVisor.setText("8");
-                controleOp = 1;
-                primeiroValor = 8;
-            } else if (controleOp == 2) {
-                this.txtVisor.setText(this.txtVisor.getText()+" 8 ");
-                controleOp = 3;
-                segundoValor = 8;
+            if(controleOp == 0) {
+                this.primeiroValor = this.primeiroValor + "8";
+                this.txtVisor.setText(this.primeiroValor);
+                this.primeiroValorInt = Double.parseDouble(this.primeiroValor);
+            } else if (controleOp == 1){
+                this.segundoValor = this.segundoValor + "8";
+                this.expressao = this.expressao + "8";
+                this.segundoValorInt = Double.parseDouble(this.segundoValor);
+                this.txtVisor.setText(this.expressao);
             }
 
         }
         if(e.getSource()==btnNum9){
-            if(controleOp == 0){
-                this.txtVisor.setText("9");
-                controleOp = 1;
-                primeiroValor = 9;
-            } else if (controleOp == 2) {
-                this.txtVisor.setText(this.txtVisor.getText()+" 9 ");
-                controleOp = 3;
-                segundoValor = 9;
+            if(controleOp == 0) {
+                this.primeiroValor = this.primeiroValor + "9";
+                this.txtVisor.setText(this.primeiroValor);
+                this.primeiroValorInt = Double.parseDouble(this.primeiroValor);
+            } else if (controleOp == 1){
+                this.segundoValor = this.segundoValor + "9";
+                this.expressao = this.expressao + "9";
+                this.segundoValorInt = Double.parseDouble(this.segundoValor);
+                this.txtVisor.setText(this.expressao);
             }
 
         }
 
 
-    //botões de função
+    //botões de função  --------------------------------------------
         if(e.getSource()==btnSoma){
-            if(controleOp == 0 || controleOp == 2){
-                //invalido
-            } else if (controleOp == 1){
-                this.txtVisor.setText(this.txtVisor.getText()+" + ");
-                controleOp = 2;
-                selectedOp = 1;
+            if(controleOp == 0) {
+                this.expressao = this.primeiroValor + " + ";
+                this.txtVisor.setText(this.expressao);
+                controleOp = 1;
+                this.selectedOp = 1;
             }
 
         }
         if(e.getSource()==btnSubtracao){
-            if(controleOp == 0 || controleOp == 2){
-                //invalido
-            } else if (controleOp == 1){
-                this.txtVisor.setText(this.txtVisor.getText()+" - ");
-                controleOp = 2;
-                selectedOp = 2;
+            if(controleOp == 0) {
+                this.expressao = this.primeiroValor + " - ";
+                this.txtVisor.setText(this.expressao);
+                controleOp = 1;
+                this.selectedOp = 2;
             }
 
         }
         if(e.getSource()==btnMultiplicacao){
-            if(controleOp == 0 || controleOp == 2){
-                //invalido
-            } else if (controleOp == 1){
-                this.txtVisor.setText(this.txtVisor.getText()+" * ");
-                controleOp = 2;
-                selectedOp = 3;
+            if(controleOp == 0) {
+                this.expressao = this.primeiroValor + " * ";
+                this.txtVisor.setText(this.expressao);
+                controleOp = 1;
+                this.selectedOp = 3;
             }
 
         }
         if(e.getSource()==btnDivisao){
-            if(controleOp == 0 || controleOp == 2){
-                //invalido
-            } else if (controleOp == 1){
-                this.txtVisor.setText(this.txtVisor.getText()+" / ");
-                controleOp = 2;
-                selectedOp = 4;
+            if(controleOp == 0) {
+                this.expressao = this.primeiroValor + " / ";
+                this.txtVisor.setText(this.expressao);
+                controleOp = 1;
+                this.selectedOp = 4;
             }
 
         }
-        if(e.getSource()==btnResultado){
-            if(controleOp == 0 || controleOp == 1 || controleOp == 2){
 
-            } else if (controleOp == 3){
-                switch (selectedOp){
+        if(e.getSource()==btnLimpa){
+            this.txtVisor.setText("");
+            this.primeiroValorInt = 0;
+            this.segundoValorInt = 0;
+            this.primeiroValor = "";
+            this.segundoValor = "";
+            this.controleOp = 0;
+        }
+        //Resultado --------------------------------------------------------
+        if(e.getSource()==btnResultado) {
+            if(controleOp==1) {
+                switch (selectedOp) {
                     case 1: //soma
-                        resultado = primeiroValor + segundoValor;
-                        this.txtVisor.setText(Integer.toString(resultado));
+                        this.resultado = this.primeiroValorInt + this.segundoValorInt;
+                        this.primeiroValor = Double.toString(this.resultado);
+                        this.primeiroValorInt = this.resultado;
+                        this.txtVisor.setText(this.primeiroValor);
+                        this.segundoValor = "";
+                        this.segundoValorInt = 0;
                         controleOp = 0;
                         break;
                     case 2: // sub
-                        resultado = primeiroValor - segundoValor;
-                        this.txtVisor.setText(Integer.toString(resultado));
+                        this.resultado = this.primeiroValorInt - this.segundoValorInt;
+                        this.primeiroValor = Double.toString(this.resultado);
+                        this.primeiroValorInt = this.resultado;
+                        this.txtVisor.setText(this.primeiroValor);
+                        this.segundoValor = "";
+                        this.segundoValorInt = 0;
                         controleOp = 0;
                         break;
                     case 3: //mult
-                        resultado = primeiroValor * segundoValor;
-                        this.txtVisor.setText(Integer.toString(resultado));
+                        this.resultado = this.primeiroValorInt * this.segundoValorInt;
+                        this.primeiroValor = Double.toString(this.resultado);
+                        this.primeiroValorInt = this.resultado;
+                        this.txtVisor.setText(this.primeiroValor);
+                        this.segundoValor = "";
+                        this.segundoValorInt = 0;
                         controleOp = 0;
                         break;
                     case 4: //div
-                        resultado = primeiroValor / segundoValor;
-                        this.txtVisor.setText(Integer.toString(resultado));
+                        this.resultado = this.primeiroValorInt / this.segundoValorInt;
+                        this.primeiroValor = Double.toString(this.resultado);
+                        this.primeiroValorInt = this.resultado;
+                        this.txtVisor.setText(this.primeiroValor);
+                        this.segundoValor = "";
+                        this.segundoValorInt = 0;
                         controleOp = 0;
                         break;
                 }
             }
-
         }
     } //fim actionPerformed
-
 
 
 
